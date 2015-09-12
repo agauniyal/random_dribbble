@@ -1,0 +1,36 @@
+{
+  "name": "random_dribbble",
+  "version": "0.0.1",
+  "description": "Practicing Around!",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agauniyal/random_dribbble.git"
+  },
+  "author": "Abhinav Gauniyal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/agauniyal/random_dribbble/issues"
+  },
+  "homepage": "https://github.com/agauniyal/random_dribbble#readme",
+  "scripts": {
+    "test": "npm run lint",
+    "lint": "csslint --format=compact css/*.css",
+    "clean": "rimraf css/",
+    "build:sass2css": "npm run clean && node-sass sass/ -o css/",
+    "build:prefix": "cd css/ && autoprefixer-cli -b 'last 2 versions' *.css",
+    "build:minify": "cd css/ && cat normalize.css `ls -I normalize.css -I main.min.css` | cleancss -o main.min.css",
+    "build:clean": "cd css/ && find . -type f ! -name '*.min.css' -delete",
+    "build": "npm run build:sass2css && npm run build:prefix && npm run build:minify && npm run build:clean",
+    "build:watch": "watch 'npm run build' sass/"
+  },
+  "devDependencies": {
+      "node-sass": "latest",
+      "csslint": "latest",
+      "autoprefixer-cli": "latest",
+      "autoprefixer ": "latest",
+      "clean-css": "latest",
+      "rimraf": "latest",
+      "watch": "latest"
+  }
+}
